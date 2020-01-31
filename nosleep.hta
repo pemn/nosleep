@@ -34,7 +34,6 @@
         var oLink = WshShell.CreateShortcut(sLinkFile);
 
         oLink.TargetPath = oHTA.commandLine.replace(/"/g, '');
-        // oLink.TargetPath = "C:\\home\\code\\Javascript\\nosleep.hta"
         oLink.Save();
       }
       alert("startup setup completed");
