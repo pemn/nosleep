@@ -3,6 +3,8 @@
   <HTA:APPLICATION ID="oHTA" APPLICATIONNAME="nosleep" MAXIMIZEBUTTON="no" SINGLEINSTANCE="yes">
   <script language="JavaScript">
     var WshShell = new ActiveXObject("WScript.Shell");
+    var fso = new ActiveXObject("Scripting.FileSystemObject");
+
     function nosleep(s) {
       it_tick.value = s;
       if (s === undefined || s < 0) {
@@ -20,11 +22,42 @@
       setTimeout(function() { nosleep(s - 1) }, 1000);
     }
 
+    function setup_startup() {
+      if (! confirm(bt_setup.title)) {
+        return;
+      }
+      if (fso.FileExists(WshShell.SpecialFolders("Startup") + "\\" + oHTA.APPLICATIONNAME + ".lnk")) {
+        fso.DeleteFile(WshShell.SpecialFolders("Startup") + "\\" + oHTA.APPLICATIONNAME + ".lnk");
+      } else {
+        // create the startup icon
+        var sLinkFile = WshShell.SpecialFolders("Startup") + "\\" + oHTA.APPLICATIONNAME + ".lnk";
+        var oLink = WshShell.CreateShortcut(sLinkFile);
+
+        oLink.TargetPath = oHTA.commandLine.replace(/"/g, '');
+        // oLink.TargetPath = "C:\\home\\code\\Javascript\\nosleep.hta"
+        oLink.Save();
+      }
+      alert("startup setup completed");
+      check_setup();
+    }
+
+    function check_setup() {
+        // check if the startup link already exists
+        if (fso.FileExists(WshShell.SpecialFolders("Startup") + "\\" + oHTA.APPLICATIONNAME + ".lnk")) {
+          bt_setup.value="M";
+          bt_setup.title="clear automatic startup";
+        } else {
+          bt_setup.value="<";
+          bt_setup.title="setup automatic startup";
+        }
+    }
+
     // run after the document is loaded
     function body_onload() {
         document.title = document.URL.match(/[^\\]+(?=\.\w+)\b/);
         // adjust window to fit contents
         window.resizeTo(600, 480);
+        check_setup();
         nosleep();
     }
   </script>
@@ -32,5 +65,6 @@
   <body onload="body_onload()">
       <input type="text" id="it_tick" value=0 style="font-size: 24pt; width: 140px; position: absolute; left: 180; top: 100;">
       <p id="tp_status" style="font-family: Wingdings; font-size: 96pt; position: absolute; left: 100;">·</p>
+      <input type="button" id="bt_setup" value="" onclick="setup_startup()" style="font-family: Wingdings; position: absolute; right: 0; bottom: 0;">
   </body>
 </html>
