@@ -6,17 +6,16 @@
     // var node = document.getElementById('bt_ss');
     function nosleep(s) {
       it_tick.value = s;
-      if (s === undefined) {
-        s = 120;
+      if (s === undefined || s < 0) {
+        s = 60;
+        tp_status.innerText = ":"
       }
-      if (! s) {
+      if (s) {
+        it_tick.value = s;
+      } else {
         WshShell.sendkeys("{F15}");
-        s = 120;
         it_tick.value = "";
         tp_status.innerText = "8"
-      } else {
-        tp_status.innerText = ":"
-        it_tick.value = s;
       }
       
       setTimeout(function() { nosleep(s - 1) }, 1000);
