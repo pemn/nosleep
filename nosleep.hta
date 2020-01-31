@@ -1,0 +1,38 @@
+<html>
+  <head>
+  <HTA:APPLICATION ID="oHTA" APPLICATIONNAME="nosleep" MAXIMIZEBUTTON="no" SINGLEINSTANCE="yes">
+  <script language="JavaScript">
+    var WshShell = new ActiveXObject("WScript.Shell");
+    // var node = document.getElementById('bt_ss');
+    function nosleep(s) {
+      it_tick.value = s;
+      if (s === undefined) {
+        s = 120;
+      }
+      if (! s) {
+        WshShell.sendkeys("{F15}");
+        s = 120;
+        it_tick.value = "";
+        tp_status.innerText = "8"
+      } else {
+        tp_status.innerText = ":"
+        it_tick.value = s;
+      }
+      
+      setTimeout(function() { nosleep(s - 1) }, 1000);
+    }
+
+    // run after the document is loaded
+    function body_onload() {
+        document.title = document.URL.match(/[^\\]+(?=\.\w+)\b/);
+        // adjust window to fit the new contents
+        window.resizeTo(600, 480);
+        nosleep();
+    }
+  </script>
+  </head>
+  <body onload="body_onload()">
+      <input type="text" id="it_tick" value=0 style="font-size: 24pt; width: 140px; position: absolute; left: 180; top: 100;">
+      <p id="tp_status" style="font-family: Wingdings; font-size: 96pt; position: absolute; left: 100;">·</p>
+  </body>
+</html>
