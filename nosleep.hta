@@ -3,7 +3,6 @@
   <HTA:APPLICATION ID="oHTA" APPLICATIONNAME="nosleep" MAXIMIZEBUTTON="no" SINGLEINSTANCE="yes">
   <script language="JavaScript">
     var WshShell = new ActiveXObject("WScript.Shell");
-    // var node = document.getElementById('bt_ss');
     function nosleep(s) {
       it_tick.value = s;
       if (s === undefined || s < 0) {
@@ -24,7 +23,7 @@
     // run after the document is loaded
     function body_onload() {
         document.title = document.URL.match(/[^\\]+(?=\.\w+)\b/);
-        // adjust window to fit the new contents
+        // adjust window to fit contents
         window.resizeTo(600, 480);
         nosleep();
     }
