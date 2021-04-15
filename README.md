@@ -1,10 +1,11 @@
 # nosleep
 Simple Windows HTA script to prevent the lock screen. It works by sending ("typing") a unimplemented key (F15) every 60 seconds.  
 Most keyboards only have F keys up to F12 so this can be run all the time without risk of disrupting anything.  
-It is a javascript application, so while Windows will treat it as a executable the source code can be inspected in any text editor (No binary black box which you are not sure can be trusted).
+It is a javascript application, so while Windows will treat it as a executable.  
+The source code can be inspected in any text editor (No binary black box which you are not sure can be trusted).
 ## screenshot
-![screenshot1](https://github.com/pemn/nosleep/blob/master/assets/screenshot1.png)  
-![screenshot2](https://github.com/pemn/nosleep/blob/master/assets/screenshot2.png)  
+![screenshot1](https://github.com/pemn/nosleep/raw/master/assets/screenshot1.png)  
+![screenshot2](https://github.com/pemn/nosleep/raw/master/assets/screenshot2.png)  
 ## Setup Automatic Startup
 After executing the app any time, you have the option to "install" it by clicking on the lower right floppy disk 🖫 button.  
 You will be prompted if you want to setup so the app is automatically launched it every time you log in. CLick OK to proceed or Cancel.  
