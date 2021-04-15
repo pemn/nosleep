@@ -4,7 +4,7 @@ Most keyboards only have F keys up to F12 so this can be run all the time withou
 It is a javascript application, so while Windows will treat it as a executable.  
 The source code can be inspected in any text editor (No binary black box which you are not sure can be trusted).
 ## screenshot
-![screenshot1](https://github.com/pemn/nosleep/raw/master/assets/screenshot1.png)  
+![screenshot1](./assets/screenshot1.png)  
 ![screenshot2](https://github.com/pemn/nosleep/raw/master/assets/screenshot2.png)  
 ## Setup Automatic Startup
 After executing the app any time, you have the option to "install" it by clicking on the lower right floppy disk 🖫 button.  
