@@ -4,9 +4,9 @@ Most keyboards only have F keys up to F12 so this can be run all the time withou
 It is a javascript application, so while Windows will treat it as a executable.  
 The source code can be inspected in any text editor (No binary black box which you are not sure can be trusted).
 ## Alternatives
-A more sophisticated solution is the StayAwake Project:
+A more sophisticated and recomended solution is the StayAwake Project:
 
-(StayAwake)[https://github.com/R1tschY/StayAwake]
+[StayAwake](https://github.com/R1tschY/StayAwake)  
 
 ## screenshot
 ![screenshot1](./assets/screenshot1.png?raw=true)  
